@@ -1,79 +1,60 @@
-# Data Project Template
+# 🏦 Bank Churn Prediction
 
-<a target="_blank" href="https://datalumina.com/">
-    <img src="https://img.shields.io/badge/Datalumina-Project%20Template-2856f7" alt="Datalumina Project" />
-</a>
+Набор файлов и ноутбуков, реализующий решение задачи **Bank Churn Prediction**, которое могло попасть в топ‑3 по private leaderboard на Kaggle.
 
-## Cookiecutter Data Science
-This project template is a simplified version of the [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org) template, created to suit the needs of Datalumina and made available as a GitHub template.
+---
 
-## Adjusting .gitignore
+## 📁 Структура репозитория
 
-Ensure you adjust the `.gitignore` file according to your project needs. For example, since this is a template, the `/data/` folder is commented out and data will not be exlucded from source control:
-
-```plaintext
-# exclude data from source control by default
-# /data/
 ```
 
-Typically, you want to exclude this folder if it contains either sensitive data that you do not want to add to version control or large files.
+BANK\_PROJECT/
+│
+├── notebooks/               # Jupyter ноутбуки с пайплайнами
+├── src/                     # Исходный код (модули)
+├── data/                    # Скрипты для загрузки/предобработки
+├── models/                  # Сохранённые обученные модели (.pkl)
+├── predicts/                # Генерация submission.csv и результаты
+├── requirements.txt         # Список зависимостей
+├── README.md                # Этот файл
+├── .gitignore
+└── LICENSE
 
-## Duplicating the .env File
-To set up your environment variables, you need to duplicate the `.env.example` file and rename it to `.env`. You can do this manually or using the following terminal command:
+````
+
+---
+
+## 🎯 Описание решения
+
+Это решение включает следующие ключевые идеи:
+
+- **Target encoding** по фамилии (`Surname`) для повышения информативности.
+- **Признак страны (predicted country)**, полученный на основе нейронной модели, обученной на отдельном датасете Kaggle — по фамилии определяет страну.
+
+---
+
+## 🚀 Как воспроизвести
+
+### 1. Установка окружения:
 
 ```bash
-cp .env.example .env # Linux, macOS, Git Bash, WSL
-copy .env.example .env # Windows Command Prompt
+pip install -r requirements.txt
+````
+### 2. Обучение модели и Генерация предсказаний:
+
+```bash
+python __init__.py
 ```
 
-This command creates a copy of `.env.example` and names it `.env`, allowing you to configure your environment variables specific to your setup.
+---
+
+## 📊 Результаты
+
+| Public AUC | Private AUC  |
+| -----------| ------------ |
+| \~0.93929  | \~0.93267     |
 
 
-## Project Organization
 
+Если хочешь, я могу адаптировать блоки под твою точную структуру (например, если нейронка в `notebooks/` или ты хочешь добавить скриншот из Kaggle).
 ```
-├── LICENSE            <- Open-source license if one is chosen
-├── README.md          <- The top-level README for developers using this project
-├── data
-│   ├── external       <- Data from third party sources
-│   ├── interim        <- Intermediate data that has been transformed
-│   ├── processed      <- The final, canonical data sets for modeling
-│   └── raw            <- The original, immutable data dump
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-└── src                         <- Source code for this project
-    │
-    ├── __init__.py             <- Makes src a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    │    
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    ├── plots.py                <- Code to create visualizations 
-    │
-    └── services                <- Service classes to connect with external platforms, tools, or APIs
-        └── __init__.py 
-```
-
---------
