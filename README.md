@@ -1,6 +1,7 @@
 ## 🏦 Bank Churn Prediction
 
 Набор файлов и ноутбуков, реализующий решение задачи Bank Churn Prediction, на котором я вошел в топ 5.
+Notebook на kaggle https://www.kaggle.com/code/canonica1/top-3-private-score-0-93267
 
 ## 📁 Структура репозитория
 
